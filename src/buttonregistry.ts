@@ -6,6 +6,7 @@ export interface ButtonConfig {
 
   type?: "auto" | "korry";
 
+  channel?: number;
   notecontroller?: number;
 }
 
@@ -147,14 +148,16 @@ function getMidiIns(btn: ButtonConfig): MidiIn[] {
 
   if (type === "auto") {
     const controller = toMidiNumber(btn.notecontroller);
-    return controller === undefined ? [] : [{ channel: 1, controller }];
+    const channel = toMidiChannel(btn.channel);
+    return controller === undefined || channel === undefined ? [] : [{ channel, controller }];
   }
 
   if (type === "korry") {
     const controller = toMidiNumber(btn.notecontroller);
-    return controller === undefined ? [] : [
-      { channel: 1, controller, korryPart: "lower" },
-      { channel: 2, controller, korryPart: "upper" }
+    const channel = toMidiChannel(btn.channel);
+    return controller === undefined || channel === undefined || channel >= 16 ? [] : [
+      { channel, controller, korryPart: "lower" },
+      { channel: channel + 1, controller, korryPart: "upper" }
     ];
   }
 
@@ -166,6 +169,13 @@ function toMidiNumber(value: unknown): number | undefined {
 
   const parsed = Number(value);
   return Number.isFinite(parsed) ? parsed : undefined;
+}
+
+function toMidiChannel(value: unknown): number | undefined {
+  const parsed = toMidiNumber(value);
+  if (parsed === undefined || !Number.isInteger(parsed) || parsed < 1 || parsed > 16) return undefined;
+
+  return parsed;
 }
 
 function parseKorryPartValue(value: number): 0 | 1 | undefined {

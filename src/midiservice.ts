@@ -56,7 +56,7 @@ class MidiService {
   sendCC(value: number, controller: number, channel: number) {
     if (!this.output) return;
 
-    this.output.sendControlChange(controller, value, { channels: [1] });
+    this.output.sendControlChange(controller, value, { channels: channel });
   }
 
   sendNoteOn(note: number, channel: number, velocity = 127) {

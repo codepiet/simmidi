@@ -12,17 +12,16 @@
         <sdpi-textfield setting="id" type="string">
         </sdpi-textfield>
     </sdpi-item>
-    <div class="hint" color:#ffffff>
-        Wenn eine Bild-ID hinterlegt ist, wird direkt das Bild 'value0.png' gesucht und eingebaut.
-    </div>
+
+    <sdpi-item label="MIDI Channel">
+        <sdpi-textfield setting="channel" type="number" min="1" max="16">
+        </sdpi-textfield>
+    </sdpi-item>
 
     <sdpi-item label="MIDI Note/CC">
         <sdpi-textfield setting="notecontroller" type="number" min="0" max="127">
         </sdpi-textfield>
     </sdpi-item>
-    <div class="hint" color:#ffffff>
-        Hier soll nur die Note bzw. der Controller als Zahl stehen, der zum Senden auf Kanal 10 und zum Empfang auf Kanal 1 verwendet wird.
-    </div>
 </body>
 
 </html>

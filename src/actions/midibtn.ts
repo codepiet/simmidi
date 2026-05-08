@@ -81,6 +81,7 @@ type MIDIBtnType = "auto" | "korry";
 type MIDIBtnConfig = {
 	id: string;
 	type?: MIDIBtnType;
+	channel?: number;
 	notecontroller?: number;
 	rules?: MIDIRule[];
 };
@@ -132,8 +133,13 @@ async function faders() {
 
 function getMidiOut(btn: ButtonConfig | undefined, settings: MIDIBtnConfig) {
 	const note = toMidiNumber(btn?.notecontroller ?? settings.notecontroller);
+	const channel = toMidiChannel(btn?.channel ?? settings.channel);
+	const type = btn?.type ?? settings.type;
 
-	return note === undefined ? undefined : { note, channel: 10 };
+	if (note === undefined || channel === undefined) return undefined;
+	if (type === "korry" && channel >= 16) return undefined;
+
+	return { note, channel };
 }
 
 async function setInitialAutoImage(action: { setImage(image?: string): Promise<void> }, settings: MIDIBtnConfig) {
@@ -167,4 +173,11 @@ function toMidiNumber(value: unknown): number | undefined {
 
 	const parsed = Number(value);
 	return Number.isFinite(parsed) ? parsed : undefined;
+}
+
+function toMidiChannel(value: unknown): number | undefined {
+	const parsed = toMidiNumber(value);
+	if (parsed === undefined || !Number.isInteger(parsed) || parsed < 1 || parsed > 16) return undefined;
+
+	return parsed;
 }
