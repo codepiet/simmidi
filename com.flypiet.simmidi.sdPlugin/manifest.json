@@ -1,0 +1,63 @@
+{
+	"Name": "simmidi",
+	"Version": "0.1.0.0",
+	"Author": "flypiet",
+	"Actions": [
+		{
+			"Name": "MIDIAutomaticButton",
+			"UUID": "com.flypiet.simmidi.midiautobtn",
+			"Icon": "images/actions/autobtn/icon",
+			"Tooltip": "MIDIAutomaticButton with one note/controller mapping.",
+			"PropertyInspectorPath": "ui/autobtn.html",
+			"Controllers": [
+				"Keypad"
+			],
+			"States": [
+				{
+					"Image": "images/actions/autobtn/key",
+					"TitleAlignment": "top"
+				}
+			]
+		},
+		{
+			"Name": "MIDIKorryButton",
+			"UUID": "com.flypiet.simmidi.midikorrybtn",
+			"Icon": "images/actions/korrybtn/icon",
+			"Tooltip": "MIDIKorryButton with split upper/lower feedback.",
+			"PropertyInspectorPath": "ui/korrybtn.html",
+			"Controllers": [
+				"Keypad"
+			],
+			"States": [
+				{
+					"Image": "images/actions/korrybtn/key",
+					"TitleAlignment": "top"
+				}
+			]
+		}
+	],
+	"Category": "simmidi",
+	"CategoryIcon": "images/plugin/icon",
+	"CodePath": "bin/plugin.js",
+	"Description": "Bridge between Mobiflight and Stream Deck via MIDI",
+	"Icon": "images/plugin/marketplace",
+	"SDKVersion": 3,
+	"Software": {
+		"MinimumVersion": "7.1"
+	},
+	"OS": [
+		{
+			"Platform": "mac",
+			"MinimumVersion": "12"
+		},
+		{
+			"Platform": "windows",
+			"MinimumVersion": "10"
+		}
+	],
+	"Nodejs": {
+		"Version": "24",
+		"Debug": "enabled"
+	},
+	"UUID": "com.flypiet.simmidi"
+}
