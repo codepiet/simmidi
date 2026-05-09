@@ -12,7 +12,6 @@ abstract class BaseMIDIBtn extends SingletonAction<MIDIBtnConfig> {
 
 		buttonRegistry.registerContext(this.settings.id, ev.action);
 		buttonRegistry.registerOrUpdateButton(this.settings, ev.action);
-		await setInitialAutoImage(ev.action, this.settings);
 	}
 
 	override async onWillDisappear(ev: WillDisappearEvent<MIDIBtnConfig>) {
@@ -52,7 +51,6 @@ abstract class BaseMIDIBtn extends SingletonAction<MIDIBtnConfig> {
 		this.settings = withActionType(ev.payload.settings, this.fixedType);
 		buttonRegistry.registerContext(this.settings.id, ev.action);
 		buttonRegistry.registerOrUpdateButton(this.settings, ev.action);
-		await setInitialAutoImage(ev.action, this.settings);
 	}
 }
 
@@ -140,32 +138,6 @@ function getMidiOut(btn: ButtonConfig | undefined, settings: MIDIBtnConfig) {
 	if (type === "korry" && channel >= 16) return undefined;
 
 	return { note, channel };
-}
-
-async function setInitialAutoImage(action: { setImage(image?: string): Promise<void> }, settings: MIDIBtnConfig) {
-	//if (settings.type !== "auto" || !settings.id) return;
-	if (settings.type == "auto" && settings.id) {
-		const image = `images/${settings.id}0.png`;
-		streamDeck.logger.debug("setting initial auto image in", settings.id, image);
-		await action.setImage(image);
-	} else if (settings.type == "korry" && settings.id) {
-		const image = `images/korry/${getKorryBaseImageName(settings.id)}.png`;
-		streamDeck.logger.debug("setting initial korry image in", settings.id, image);
-		await action.setImage(image);
-	} else {
-		streamDeck.logger.debug("button has no id or no type ", settings.id);
-	}
-}
-
-function getKorryBaseImageName(id: string) {
-	const [lower, upper] = id.split(/[\\/]/);
-	if (!lower || !upper) return id;
-
-	return `${stripKorryColor(lower)}_${stripKorryColor(upper)}`;
-}
-
-function stripKorryColor(name: string) {
-	return name.split("_")[0];
 }
 
 function toMidiNumber(value: unknown): number | undefined {

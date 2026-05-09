@@ -29,6 +29,8 @@ export class ButtonRegistry {
   // Mapping: internal button key -> StreamDeck contexts
   private contexts = new Map<string, Set<any>>();
 
+  private autoStates = new Map<string, number>();
+
   private korryStates = new Map<string, KorryState>();
 
   // Wird von den MIDI-Button-Actions aufgerufen.
@@ -58,7 +60,9 @@ export class ButtonRegistry {
 
     this.buttons.set(key, btn);
 
-    if (btn.type === "korry") {
+    if (btn.type === "auto") {
+      void this.updateAutoImage(key, btn);
+    } else if (btn.type === "korry") {
       void this.updateKorryImage(key, btn);
     }
   }
@@ -84,16 +88,8 @@ export class ButtonRegistry {
   private applyState(key: string, btn: ButtonConfig, value: number, korryPart?: KorryPart) {
     const type = btn.type;
     if (type == "auto") {
-      const image = "images/" + btn.id + value + ".png";
-      const contexts = this.contexts.get(key);
-      if (!contexts) return;
-
-      streamDeck.logger.debug("contexts is not empty:", contexts.size, " entries");
-
-      for (const ctx of contexts) {
-        streamDeck.logger.debug("setting new auto image in", key, image);
-        ctx.setImage(image);
-      }
+      this.autoStates.set(key, value);
+      void this.updateAutoImage(key, btn);
     } else if (type === "korry") {
       if (!korryPart) {
         streamDeck.logger.warn("Korry event without upper/lower part", key, value);
@@ -124,6 +120,22 @@ export class ButtonRegistry {
 
   getKorryState(id: string): KorryState {
     return this.korryStates.get(id) ?? { upper: 0, lower: 0 };
+  }
+
+  private getAutoState(id: string): number {
+    return this.autoStates.get(id) ?? 0;
+  }
+
+  private async updateAutoImage(key: string, btn: ButtonConfig) {
+    const contexts = this.contexts.get(key);
+    if (!contexts || btn.type !== "auto") return;
+
+    const image = "images/" + btn.id + this.getAutoState(key) + ".png";
+    streamDeck.logger.debug("setting auto image in", key, image);
+
+    for (const ctx of contexts) {
+      await ctx.setImage(image);
+    }
   }
 
   private async updateKorryImage(key: string, btn: ButtonConfig) {

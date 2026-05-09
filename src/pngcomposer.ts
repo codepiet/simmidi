@@ -8,56 +8,51 @@ type PngImage = {
   data: Buffer;
 };
 
-type KorryImageParts = {
-  base: string;
-  lower: string;
-  upper: string;
-};
-
 const PNG_SIGNATURE = Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]);
 const crcTable = makeCrcTable();
 
 export function composeKorryImageDataUrl(id: string, state: { upper: 0 | 1; lower: 0 | 1 }): string {
-  const parts = getKorryImageParts(id);
+  const parts = getKorryImageNames(id, state);
   const imagesDir = "./images/korry";
-  const base = readPng(path.join(imagesDir, parts.base));
+  const lower = readPng(path.join(imagesDir, parts.lower));
+  const upper = readPng(path.join(imagesDir, parts.upper));
 
-  if (state.lower === 1) {
-    overlayIfPresent(base, path.join(imagesDir, parts.lower));
-  }
+  const image = stackAnnunciators(upper, lower);
 
-  if (state.upper === 1) {
-    overlayIfPresent(base, path.join(imagesDir, parts.upper));
-  }
-
-  return `data:image/png;base64,${encodePng(base).toString("base64")}`;
+  return `data:image/png;base64,${encodePng(image).toString("base64")}`;
 }
 
-function getKorryImageParts(id: string): KorryImageParts {
+function getKorryImageNames(id: string, state: { upper: 0 | 1; lower: 0 | 1 }) {
   const [lower, upper] = id.split(/[\\/]/);
   if (!lower || !upper) {
     throw new Error(`Korry id must use lower/upper, for example ON_blue/FAULT_amber: ${id}`);
   }
 
   return {
-    base: `${stripKorryColor(lower)}_${stripKorryColor(upper)}.png`,
-    lower: `L_${lower}.png`,
-    upper: `U_${upper}.png`
+    lower: `${state.lower === 1 ? normalizeImageName(lower) : getGreyImageName(lower)}.png`,
+    upper: `${state.upper === 1 ? normalizeImageName(upper) : getGreyImageName(upper)}.png`
   };
 }
 
-function stripKorryColor(name: string) {
-  return name.split("_")[0];
+function normalizeImageName(name: string) {
+  return name.replace(/\.png$/i, "");
 }
 
-function overlayIfPresent(base: PngImage, filePath: string) {
-  if (!fs.existsSync(filePath)) return;
+function getGreyImageName(name: string) {
+  const normalized = normalizeImageName(name);
+  const separator = normalized.lastIndexOf("_");
+  if (separator < 0) {
+    throw new Error(`Korry annunciator image name must include a color suffix: ${name}`);
+  }
 
-  const layer = readPng(filePath);
-  composite(base, layer);
+  return `${normalized.slice(0, separator)}_grey`;
 }
 
 function readPng(filePath: string): PngImage {
+  if (!fs.existsSync(filePath)) {
+    throw new Error(`Korry image not found: ${filePath}`);
+  }
+
   const png = fs.readFileSync(filePath);
   if (!png.subarray(0, 8).equals(PNG_SIGNATURE)) {
     throw new Error(`Not a PNG file: ${filePath}`);
@@ -137,22 +132,47 @@ function unfilterScanlines(inflated: Buffer, width: number, height: number, chan
   return output;
 }
 
-function composite(base: PngImage, layer: PngImage) {
-  if (base.width !== layer.width || base.height !== layer.height) {
-    throw new Error(`Korry image sizes differ. Base is ${base.width}x${base.height}, layer is ${layer.width}x${layer.height}.`);
+function stackAnnunciators(upper: PngImage, lower: PngImage): PngImage {
+  if (upper.width !== lower.width || upper.height !== lower.height) {
+    throw new Error(`Korry annunciator image sizes differ. Upper is ${upper.width}x${upper.height}, lower is ${lower.width}x${lower.height}.`);
   }
 
-  for (let i = 0; i < base.data.length; i += 4) {
-    const srcA = layer.data[i + 3] / 255;
-    if (srcA === 0) continue;
+  const width = upper.width;
+  const stackedHeight = upper.height + lower.height;
+  const height = Math.max(144, stackedHeight);
+  const y = Math.floor((height - stackedHeight) / 2);
+  const image: PngImage = {
+    width,
+    height,
+    data: Buffer.alloc(width * height * 4)
+  };
 
-    const dstA = base.data[i + 3] / 255;
-    const outA = srcA + dstA * (1 - srcA);
+  compositeAt(image, upper, 0, y);
+  compositeAt(image, lower, 0, y + upper.height);
 
-    base.data[i] = blendChannel(layer.data[i], srcA, base.data[i], dstA, outA);
-    base.data[i + 1] = blendChannel(layer.data[i + 1], srcA, base.data[i + 1], dstA, outA);
-    base.data[i + 2] = blendChannel(layer.data[i + 2], srcA, base.data[i + 2], dstA, outA);
-    base.data[i + 3] = Math.round(outA * 255);
+  return image;
+}
+
+function compositeAt(base: PngImage, layer: PngImage, xOffset: number, yOffset: number) {
+  if (xOffset < 0 || yOffset < 0 || xOffset + layer.width > base.width || yOffset + layer.height > base.height) {
+    throw new Error(`Korry layer does not fit canvas. Canvas is ${base.width}x${base.height}, layer is ${layer.width}x${layer.height} at ${xOffset},${yOffset}.`);
+  }
+
+  for (let y = 0; y < layer.height; y++) {
+    for (let x = 0; x < layer.width; x++) {
+      const src = (y * layer.width + x) * 4;
+      const dst = ((y + yOffset) * base.width + x + xOffset) * 4;
+      const srcA = layer.data[src + 3] / 255;
+      if (srcA === 0) continue;
+
+      const dstA = base.data[dst + 3] / 255;
+      const outA = srcA + dstA * (1 - srcA);
+
+      base.data[dst] = blendChannel(layer.data[src], srcA, base.data[dst], dstA, outA);
+      base.data[dst + 1] = blendChannel(layer.data[src + 1], srcA, base.data[dst + 1], dstA, outA);
+      base.data[dst + 2] = blendChannel(layer.data[src + 2], srcA, base.data[dst + 2], dstA, outA);
+      base.data[dst + 3] = Math.round(outA * 255);
+    }
   }
 }
 
