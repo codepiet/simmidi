@@ -39,3 +39,35 @@ install streamdeck tools and necessary npm-modules (TODO)
 
 **restart plugin in streamdeck with:**
 ```streamdeck restart com.flypiet.simmidi```
+
+## MIDI CC simulator
+
+For quick tests without MobiFlight and the simulator running, you can send repeating MIDI CC messages from the command line.
+
+List available MIDI ports:
+```powershell
+npm run midi:sim -- --list
+```
+
+Send values `0`, `1`, `2` once per second:
+```powershell
+npm run midi:sim -- --device StreamDeck --controller 42
+```
+
+Run the Korry annunciator sequence. This sends lower only, upper only, both on, then both off:
+```powershell
+npm run midi:sim -- --device StreamDeck --controller 42 --channel 1 --korry
+```
+
+The same settings can be provided through environment variables:
+```powershell
+$env:SIMMIDI_DEVICE="StreamDeck"
+$env:SIMMIDI_CONTROLLER="42"
+npm run midi:sim
+```
+
+Optional settings:
+- `--channel 1` or `SIMMIDI_CHANNEL`
+- `--interval 1000` or `SIMMIDI_INTERVAL_MS`
+- `--values 0,1,2` or `SIMMIDI_VALUES`
+- `--korry` or `SIMMIDI_KORRY=1`

@@ -18,13 +18,19 @@ class MidiService {
   private lastReconnectAttempt = 0;
   private lastMissingDeviceLog = 0;
 
-  private readonly handleControlChange = (e: any) => {
-    const channel = e.message.channel;
-    const cc = e.controller.number;
-    const value = Math.round(Number(e.value) * 127);
+  private readonly handleMidiMessage = (e: any) => {
+    const data = getMidiData(e);
+    if (!data || data.length < 3) return;
 
-    streamDeck.logger.debug("control message", channel, cc, value);
+    const status = data[0];
+    const command = status >> 4;
+    if (command !== 0xb) return;
 
+    const channel = (status & 0x0f) + 1;
+    const cc = data[1];
+    const value = data[2];
+
+    streamDeck.logger.debug("midi cc message", channel, cc, value);
     buttonRegistry.handleCC(value, channel, cc);
   };
 
@@ -71,8 +77,8 @@ class MidiService {
     try {
       action(output);
     } catch (err) {
-      streamDeck.logger.error(`MIDI ${label} failed; reconnecting`, err);
-      this.markDisconnected();
+      streamDeck.logger.error(`MIDI ${label} failed; reconnecting output`, err);
+      this.output = null;
       void this.reconnect(`send failed: ${label}`);
     }
   }
@@ -80,7 +86,8 @@ class MidiService {
   private getReadyOutput(label: string) {
     if (this.isPortReady(this.output)) return this.output;
 
-    streamDeck.logger.warn(`MIDI output not ready for ${label}; reconnecting`);
+    streamDeck.logger.warn(`MIDI output not ready for ${label}; reconnecting output`);
+    this.output = null;
     void this.reconnect(`output not ready: ${label}`);
     return null;
   }
@@ -89,14 +96,10 @@ class MidiService {
     if (this.healthCheckTimer) return;
 
     this.healthCheckTimer = setInterval(() => {
-      if (!this.isConnectionHealthy()) {
+      if (!this.isPortReady(this.input) || !this.isPortReady(this.output)) {
         void this.reconnect("health check");
       }
     }, HEALTH_CHECK_INTERVAL_MS);
-  }
-
-  private isConnectionHealthy() {
-    return this.isPortReady(this.input) && this.isPortReady(this.output);
   }
 
   private async reconnect(reason: string, immediate = false): Promise<boolean> {
@@ -122,66 +125,103 @@ class MidiService {
 
       if (!this.midiDeviceName) {
         streamDeck.logger.warn("MIDI device name is not configured");
-        this.markDisconnected();
+        this.clearInput();
+        this.output = null;
         return false;
       }
 
       const input = WebMidi.inputs.find(port => port.name === this.midiDeviceName);
       const output = WebMidi.outputs.find(port => port.name === this.midiDeviceName);
 
+      const inputReady = await this.connectInput(input, reason);
+      const outputReady = await this.connectOutput(output, reason);
+
       if (!input || !output) {
         this.logMissingDevice(reason);
-        this.markDisconnected();
-        return false;
       }
 
-      await this.openPort(input, "input");
-      await this.openPort(output, "output");
-
-      if (!this.isPortReady(input) || !this.isPortReady(output)) {
-        streamDeck.logger.warn(
-          `MIDI device "${this.midiDeviceName}" found but not ready ` +
-          `(input: ${describePort(input)}, output: ${describePort(output)})`
+      if (inputReady || outputReady) {
+        streamDeck.logger.info(
+          `MIDI status for "${this.midiDeviceName}" (${reason}): ` +
+          `input ${inputReady ? "ready" : "not ready"}, output ${outputReady ? "ready" : "not ready"}`
         );
-        this.markDisconnected();
+      }
+
+      return inputReady && outputReady;
+    } catch (err) {
+      streamDeck.logger.error(`MIDI reconnect failed (${reason})`, err);
+      return false;
+    }
+  }
+
+  private async connectInput(input: any, reason: string) {
+    if (!input) {
+      this.clearInput();
+      return false;
+    }
+
+    try {
+      await this.openPort(input, "input");
+
+      if (!this.isPortReady(input)) {
+        streamDeck.logger.warn(`MIDI input "${input.name}" not ready (${reason}): ${describePort(input)}`);
+        this.clearInput();
         return false;
       }
 
       this.bindInput(input);
-      this.output = output;
-
-      streamDeck.logger.info(`MIDI connected to "${this.midiDeviceName}" (${reason})`);
       return true;
     } catch (err) {
-      streamDeck.logger.error(`MIDI reconnect failed (${reason})`, err);
-      this.markDisconnected();
+      streamDeck.logger.error(`MIDI input reconnect failed (${reason})`, err);
+      this.clearInput();
+      return false;
+    }
+  }
+
+  private async connectOutput(output: any, reason: string) {
+    if (!output) {
+      this.output = null;
+      return false;
+    }
+
+    try {
+      await this.openPort(output, "output");
+
+      if (!this.isPortReady(output)) {
+        streamDeck.logger.warn(`MIDI output "${output.name}" not ready (${reason}): ${describePort(output)}`);
+        this.output = null;
+        return false;
+      }
+
+      this.output = output;
+      streamDeck.logger.debug("using MIDI output: ", this.output.name);
+      return true;
+    } catch (err) {
+      streamDeck.logger.error(`MIDI output reconnect failed (${reason})`, err);
+      this.output = null;
       return false;
     }
   }
 
   private bindInput(input: any) {
-    if (this.input === input && input.hasListener?.("controlchange", this.handleControlChange)) return;
+    if (this.input === input && input.hasListener?.("midimessage", this.handleMidiMessage)) return;
 
-    this.unbindInput();
+    this.clearInput();
     this.input = input;
-    this.input.addListener("controlchange", this.handleControlChange);
+    this.input.addListener("midimessage", this.handleMidiMessage);
     streamDeck.logger.debug("using MIDI input: ", this.input.name);
   }
 
-  private unbindInput() {
+  private clearInput() {
     if (!this.input) return;
 
     try {
-      this.input.removeListener?.("controlchange", this.handleControlChange);
+      this.input.removeListener?.("midimessage", this.handleMidiMessage);
     } catch (err) {
       streamDeck.logger.warn("could not remove MIDI input listener", err);
+    } finally {
+      this.input = null;
     }
-  }
-
-  private markDisconnected() {
-    this.unbindInput();
-    this.input = null;
-    this.output = null;
   }
 
   private bindWebMidiListeners() {
@@ -260,6 +300,17 @@ class MidiService {
 }
 
 export const midiService = new MidiService();
+
+function getMidiData(e: any): number[] | undefined {
+  if (Array.isArray(e.message?.data)) return e.message.data;
+  if (Array.isArray(e.rawData)) return Array.from(e.rawData);
+  if (Array.isArray(e.data)) return Array.from(e.data);
+  if (e.message?.data instanceof Uint8Array) return Array.from(e.message.data);
+  if (e.rawData instanceof Uint8Array) return Array.from(e.rawData);
+  if (e.data instanceof Uint8Array) return Array.from(e.data);
+
+  return undefined;
+}
 
 function delay(ms: number) {
   return new Promise<void>(resolve => setTimeout(resolve, ms));

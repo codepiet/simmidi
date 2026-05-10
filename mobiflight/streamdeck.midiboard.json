@@ -1,0 +1,1707 @@
+{
+  "$schema": "./mfmidiboard.schema.json",
+  "InstanceName": "StreamDeck",
+  "Inputs": [
+    {
+      "Label": "RAIN CPT - %",
+      "LabelIds": [
+        "RPLNT",
+        "WIPER"
+      ],
+      "InputType": "Button",
+      "MessageType": "Note",
+      "MessageChannel": 10,
+      "MessageIds": [
+        1,
+        2
+      ]
+    },
+    {
+      "Label": "RAIN FO - %",
+      "LabelIds": [
+        "RPLNT",
+        "WIPER"
+      ],
+      "InputType": "Button",
+      "MessageType": "Note",
+      "MessageChannel": 10,
+      "MessageIds": [
+        3,
+        4
+      ]
+    },
+    {
+      "Label": "CALLS - %",
+      "LabelIds": [
+        "MECH",
+        "ALL",
+        "FWD",
+        "AFT",
+        "EMER"
+      ],
+      "InputType": "Button",
+      "MessageType": "Note",
+      "MessageChannel": 10,
+      "MessageIds": [
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    {
+      "Label": "OXYGEN - %",
+      "LabelIds": [
+        "HIGH ALT",
+        "MASK MAN",
+        "PAX",
+        "CREW SUPPLY"
+      ],
+      "InputType": "Button",
+      "MessageType": "Note",
+      "MessageChannel": 10,
+      "MessageIds": [
+        10,
+        11,
+        12,
+        13
+      ]
+    },
+    {
+      "Label": "RCDR - %",
+      "LabelIds": [
+        "GND CTL",
+        "CVR ERASE",
+        "CVR TEST"
+      ],
+      "InputType": "Button",
+      "MessageType": "Note",
+      "MessageChannel": 10,
+      "MessageIds": [
+        14,
+        15,
+        16
+      ]
+    },
+    {
+      "Label": "GPWS - %",
+      "LabelIds": [
+        "TERR",
+        "SYS",
+        "GS MODE",
+        "FLAP MODE",
+        "LDG FLAP3"
+      ],
+      "InputType": "Button",
+      "MessageType": "Note",
+      "MessageChannel": 10,
+      "MessageIds": [
+        20,
+        21,
+        22,
+        23,
+        24
+      ]
+    },
+    {
+      "Label": "EMER ELEC PWR - %",
+      "LabelIds": [
+        "EMER TEST",
+        "GEN1 LINE",
+        "RAT",
+        "MAN ON"
+      ],
+      "InputType": "Button",
+      "MessageType": "Note",
+      "MessageChannel": 10,
+      "MessageIds": [
+        25,
+        26,
+        27,
+        28
+      ]
+    },
+    {
+      "Label": "EVAC - %",
+      "LabelIds": [
+        "COMMAND",
+        "HORN",
+        "CAPTPURS"
+      ],
+      "InputType": "Button",
+      "MessageType": "Note",
+      "MessageChannel": 10,
+      "MessageIds": [
+        30,
+        31,
+        32
+      ]
+    },
+    {
+      "Label": "FLT CTL CPT - %",
+      "LabelIds": [
+        "ELAC1",
+        "SEC1",
+        "FAC1"
+      ],
+      "InputType": "Button",
+      "MessageType": "Note",
+      "MessageChannel": 10,
+      "MessageIds": [
+        33,
+        34,
+        35
+      ]
+    },
+    {
+      "Label": "FLT CTL FO - %",
+      "LabelIds": [
+        "ELAC2",
+        "SEC2",
+        "SEC3",
+        "FAC2"
+      ],
+      "InputType": "Button",
+      "MessageType": "Note",
+      "MessageChannel": 10,
+      "MessageIds": [
+        36,
+        37,
+        38,
+        39
+      ]
+    },
+    {
+      "Label": "ADIRS - %",
+      "LabelIds": [
+        "IR1",
+        "IR2",
+        "IR3",
+        "ADIR1",
+        "ADIR2",
+        "ADIR3",
+        "ADR1",
+        "ADR2",
+        "ADR3",
+        "ONBAT"
+      ],
+      "InputType": "Button",
+      "MessageType": "Note",
+      "MessageChannel": 10,
+      "MessageIds": [
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49
+      ]
+    },
+    {
+      "Label": "LEFT - %",
+      "LabelIds": [
+        "COCKPIT DOOR VIDEO"
+      ],
+      "InputType": "Button",
+      "MessageType": "Note",
+      "MessageChannel": 10,
+      "MessageIds": [
+        19
+      ]
+    },
+    {
+      "Label": "EXT LT - %",
+      "LabelIds": [
+        "STROBE",
+        "BEACON",
+        "WING",
+        "NAV LOGO",
+        "RWY TURNOFF",
+        "LAND L",
+        "LAND R",
+        "NOSE"
+      ],
+      "InputType": "Button",
+      "MessageType": "Note",
+      "MessageChannel": 10,
+      "MessageIds": [
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57
+      ]
+    },
+    {
+      "Label": "APU - %",
+      "LabelIds": [
+        "MASTER",
+        "START"
+      ],
+      "InputType": "Button",
+      "MessageType": "Note",
+      "MessageChannel": 10,
+      "MessageIds": [
+        58,
+        59
+      ]
+    },
+    {
+      "Label": "SIGNS - %",
+      "LabelIds": [
+        "SEAT",
+        "NOSMOKE",
+        "EMER EXIT LT"
+      ],
+      "InputType": "Button",
+      "MessageType": "Note",
+      "MessageChannel": 10,
+      "MessageIds": [
+        60,
+        61,
+        63
+      ]
+    },
+    {
+      "Label": "INT LT - %",
+      "LabelIds": [
+        "OVHD INT LT",
+        "ICE IND",
+        "DOME",
+        "ANN LT"
+      ],
+      "InputType": "Button",
+      "MessageType": "Note",
+      "MessageChannel": 10,
+      "MessageIds": [
+        64,
+        65,
+        66,
+        67
+      ]
+    },
+    {
+      "Label": "ANTI ICE - %",
+      "LabelIds": [
+        "WING",
+        "ENG1",
+        "ENG2"
+      ],
+      "InputType": "Button",
+      "MessageType": "Note",
+      "MessageChannel": 10,
+      "MessageIds": [
+        70,
+        71,
+        72
+      ]
+    },
+    {
+      "Label": "PROBE - %",
+      "LabelIds": [
+        "HEAT"
+      ],
+      "InputType": "Button",
+      "MessageType": "Note",
+      "MessageChannel": 10,
+      "MessageIds": [
+        73
+      ]
+    },
+    {
+      "Label": "CABIN PRESS - %",
+      "LabelIds": [
+        "MAN CTL",
+        "MODE SEL",
+        "LDG ELEV",
+        "DITCHING"
+      ],
+      "InputType": "Button",
+      "MessageType": "Note",
+      "MessageChannel": 10,
+      "MessageIds": [
+        74,
+        75,
+        76,
+        77
+      ]
+    },
+    {
+      "Label": "AIRCOND - %",
+      "LabelIds": [
+        "HOT AIR",
+        "PACK1",
+        "ENG1 BLEED",
+        "RAM AIR",
+        "APU BLEED",
+        "ENG2 BLEED",
+        "PACK2",
+        "PACK FLOW",
+        "COCKPIT",
+        "FWD CABIN",
+        "AFT CABIN",
+        "XBLEED"
+      ],
+      "InputType": "Button",
+      "MessageType": "Note",
+      "MessageChannel": 10,
+      "MessageIds": [
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        89
+      ]
+    },
+    {
+      "Label": "ELEC - %",
+      "LabelIds": [
+        "COMM",
+        "BAT1",
+        "BAT2",
+        "AC ESS FEED",
+        "GALY CAB",
+        "IDG1",
+        "GEN1",
+        "APU GEN",
+        "BUS TIE",
+        "EXT PWR",
+        "GEN2",
+        "IDG2"
+      ],
+      "InputType": "Button",
+      "MessageType": "Note",
+      "MessageChannel": 10,
+      "MessageIds": [
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96,
+        97,
+        98,
+        99,
+        100,
+        101
+      ]
+    },
+    {
+      "Label": "FUEL - %",
+      "LabelIds": [
+        "PUMP LTK1",
+        "PUMP LTK2",
+        "PUMP CTK1",
+        "PUMP CTK2",
+        "PUMP RTK1",
+        "PUMP RTK2",
+        "MODESEL",
+        "XFEED"
+      ],
+      "InputType": "Button",
+      "MessageType": "Note",
+      "MessageChannel": 10,
+      "MessageIds": [
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        109
+      ]
+    },
+    {
+      "Label": "HYD - %",
+      "LabelIds": [
+        "RAT MAN ON",
+        "GREEN ENG1 PUMP",
+        "BLUE ELEC PUMP",
+        "PTU",
+        "YELLOW ENG2 PUMP",
+        "YELLOW ELEC PUMP"
+      ],
+      "InputType": "Button",
+      "MessageType": "Note",
+      "MessageChannel": 10,
+      "MessageIds": [
+        110,
+        111,
+        112,
+        113,
+        114,
+        115
+      ]
+    },
+    {
+      "Label": "FIRE - %",
+      "LabelIds": [
+        "ENG1 FIRE",
+        "ENG1 TEST",
+        "ENG1 AGENT1",
+        "ENG1 AGENT2",
+        "ENG2 FIRE",
+        "ENG2 TEST",
+        "ENG2 AGENT1",
+        "ENG2 AGENT2",
+        "APU FIRE",
+        "APU TEST",
+        "APU AGENT"
+      ],
+      "InputType": "Button",
+      "MessageType": "Note",
+      "MessageChannel": 10,
+      "MessageIds": [
+        116,
+        117,
+        118,
+        119,
+        120,
+        121,
+        122,
+        123,
+        124,
+        125,
+        126
+      ]
+    },
+    {
+      "Label": "ENG - %",
+      "LabelIds": [
+        "MAN START 1",
+        "MAN START 2"
+      ],
+      "InputType": "Button",
+      "MessageType": "Note",
+      "MessageChannel": 12,
+      "MessageIds": [
+        1,
+        2
+      ]
+    },
+    {
+      "Label": "VENTILATION - %",
+      "LabelIds": [
+        "BLOWER",
+        "EXTRACT",
+        "CAB FANS"
+      ],
+      "InputType": "Button",
+      "MessageType": "Note",
+      "MessageChannel": 12,
+      "MessageIds": [
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      "Label": "CARGO SMOKE - %",
+      "LabelIds": [
+        "FWD ANN",
+        "FWD SW",
+        "AFT ANN",
+        "AFT SW",
+        "TEST",
+        "ANN1",
+        "ANN2"
+      ],
+      "InputType": "Button",
+      "MessageType": "Note",
+      "MessageChannel": 12,
+      "MessageIds": [
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ]
+    },
+    {
+      "Label": "CARGO VENT - %",
+      "LabelIds": [
+        "ISOL VALVE"
+      ],
+      "InputType": "Button",
+      "MessageType": "Note",
+      "MessageChannel": 12,
+      "MessageIds": [
+        17
+      ]
+    },
+    {
+      "Label": "WRNPNL CPT - %",
+      "LabelIds": [
+        "MASTER WARN",
+        "MASTER CAUT",
+        "CHRONO",
+        "PRIO"
+      ],
+      "InputType": "Button",
+      "MessageType": "Note",
+      "MessageChannel": 12,
+      "MessageIds": [
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    {
+      "Label": "WRNPNL FO - %",
+      "LabelIds": [
+        "MASTER WARN",
+        "MASTER CAUT",
+        "CHRONO",
+        "PRIO"
+      ],
+      "InputType": "Button",
+      "MessageType": "Note",
+      "MessageChannel": 12,
+      "MessageIds": [
+        36,
+        37,
+        38,
+        39
+      ]
+    },
+    {
+      "Label": "ATCTCAS - %",
+      "LabelIds": [
+        "NUM1",
+        "NUM2",
+        "NUM3",
+        "NUM4",
+        "NUM5",
+        "NUM6",
+        "NUM7",
+        "NUM0",
+        "CLR",
+        "IDENT"
+      ],
+      "InputType": "Button",
+      "MessageType": "Note",
+      "MessageChannel": 12,
+      "MessageIds": [
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        20,
+        28,
+        29
+      ]
+    },
+    {
+      "Label": "ATCTCAS - %",
+      "LabelIds": [
+        "MODE SEL",
+        "XPDR SEL",
+        "ALT RPTG",
+        "TCAS MODE",
+        "TCAS TRAFFIC"
+      ],
+      "InputType": "Button",
+      "MessageType": "Note",
+      "MessageChannel": 12,
+      "MessageIds": [
+        30,
+        31,
+        32,
+        33,
+        34
+      ]
+    }
+  ],
+  "Outputs": [
+    {
+      "Label": "ADIRS - % ANN",
+      "LabelIds": [
+        "ONBAT"
+      ],
+      "MessageType": "CC",
+      "MessageChannel": 11,
+      "MessageIds": [
+        49
+      ],
+      "ValueOn": 1,
+      "ValueOff": 0
+    },
+    {
+      "Label": "ADIRS - % UPPER ANN",
+      "LabelIds": [
+        "IR1",
+        "IR2",
+        "IR3",
+        "ADR1",
+        "ADR2",
+        "ADR3"
+      ],
+      "MessageType": "CC",
+      "MessageChannel": 11,
+      "MessageIds": [
+        40,
+        41,
+        42,
+        46,
+        47,
+        48
+      ],
+      "ValueOn": 1,
+      "ValueOff": 0
+    },
+    {
+      "Label": "ADIRS - % LOWER ANN",
+      "LabelIds": [
+        "IR1",
+        "IR2",
+        "IR3",
+        "ADR1",
+        "ADR2",
+        "ADR3"
+      ],
+      "MessageType": "CC",
+      "MessageChannel": 10,
+      "MessageIds": [
+        40,
+        41,
+        42,
+        46,
+        47,
+        48
+      ],
+      "ValueOn": 1,
+      "ValueOff": 0
+    },
+    {
+      "Label": "ADIRS - % STATE",
+      "LabelIds": [
+        "ADIR1",
+        "ADIR2",
+        "ADIR3"
+      ],
+      "MessageType": "CC",
+      "MessageChannel": 10,
+      "MessageIds": [
+        43,
+        44,
+        45
+      ],
+      "ValueOn": 1,
+      "ValueOff": 0
+    },
+    {
+      "Label": "ADIRS - % STATE 2",
+      "LabelIds": [
+        "ADIR1",
+        "ADIR2",
+        "ADIR3"
+      ],
+      "MessageType": "CC",
+      "MessageChannel": 10,
+      "MessageIds": [
+        43,
+        44,
+        45
+      ],
+      "ValueOn": 2
+    },
+    {
+      "Label": "LEFT - % UPPER ANN",
+      "LabelIds": [
+        "COCKPIT DOOR VIDEO"
+      ],
+      "MessageType": "CC",
+      "MessageChannel": 11,
+      "MessageIds": [
+        19
+      ],
+      "ValueOn": 1,
+      "ValueOff": 0
+    },
+    {
+      "Label": "LEFT - % LOWER ANN",
+      "LabelIds": [
+        "COCKPIT DOOR VIDEO"
+      ],
+      "MessageType": "CC",
+      "MessageChannel": 10,
+      "MessageIds": [
+        19
+      ],
+      "ValueOn": 1,
+      "ValueOff": 0
+    },
+    {
+      "Label": "FLT CTL CPT - % UPPER ANN",
+      "LabelIds": [
+        "ELAC1",
+        "SEC1",
+        "FAC1"
+      ],
+      "MessageType": "CC",
+      "MessageChannel": 11,
+      "MessageIds": [
+        33,
+        34,
+        35
+      ],
+      "ValueOn": 1,
+      "ValueOff": 0
+    },
+    {
+      "Label": "FLT CTL CPT - % LOWER ANN",
+      "LabelIds": [
+        "ELAC1",
+        "SEC1",
+        "FAC1"
+      ],
+      "MessageType": "CC",
+      "MessageChannel": 10,
+      "MessageIds": [
+        33,
+        34,
+        35
+      ],
+      "ValueOn": 1,
+      "ValueOff": 0
+    },
+    {
+      "Label": "FLT CTL FO - % UPPER ANN",
+      "LabelIds": [
+        "ELAC2",
+        "SEC2",
+        "SEC3",
+        "FAC2"
+      ],
+      "MessageType": "CC",
+      "MessageChannel": 11,
+      "MessageIds": [
+        36,
+        37,
+        38,
+        39
+      ],
+      "ValueOn": 1,
+      "ValueOff": 0
+    },
+    {
+      "Label": "FLT CTL FO - % LOWER ANN",
+      "LabelIds": [
+        "ELAC2",
+        "SEC2",
+        "SEC3",
+        "FAC2"
+      ],
+      "MessageType": "CC",
+      "MessageChannel": 10,
+      "MessageIds": [
+        36,
+        37,
+        38,
+        39
+      ],
+      "ValueOn": 1,
+      "ValueOff": 0
+    },
+    {
+      "Label": "EVAC - % UPPER ANN",
+      "LabelIds": [
+        "COMMAND"
+      ],
+      "MessageType": "CC",
+      "MessageChannel": 11,
+      "MessageIds": [
+        30
+      ],
+      "ValueOn": 1,
+      "ValueOff": 0
+    },
+    {
+      "Label": "EVAC - % LOWER ANN",
+      "LabelIds": [
+        "COMMAND"
+      ],
+      "MessageType": "CC",
+      "MessageChannel": 10,
+      "MessageIds": [
+        30
+      ],
+      "ValueOn": 1,
+      "ValueOff": 0
+    },
+    {
+      "Label": "EVAC - % STATE",
+      "LabelIds": [
+        "PURSCAPT"
+      ],
+      "MessageType": "CC",
+      "MessageChannel": 10,
+      "MessageIds": [
+        32
+      ],
+      "ValueOn": 1,
+      "ValueOff": 0
+    },
+    {
+      "Label": "EMER ELEC PWR - % UPPER ANN",
+      "LabelIds": [
+        "GEN1 LINE",
+        "RAT"
+      ],
+      "MessageType": "CC",
+      "MessageChannel": 11,
+      "MessageIds": [
+        26,
+        27
+      ],
+      "ValueOn": 1,
+      "ValueOff": 0
+    },
+    {
+      "Label": "EMER ELEC PWR - % LOWER ANN",
+      "LabelIds": [
+        "GEN1 LINE",
+        "RAT"
+      ],
+      "MessageType": "CC",
+      "MessageChannel": 10,
+      "MessageIds": [
+        26,
+        27
+      ],
+      "ValueOn": 1,
+      "ValueOff": 0
+    },
+    {
+      "Label": "GPWS - % UPPER ANN",
+      "LabelIds": [
+        "TERR",
+        "SYS"
+      ],
+      "MessageType": "CC",
+      "MessageChannel": 11,
+      "MessageIds": [
+        20,
+        21
+      ],
+      "ValueOn": 1,
+      "ValueOff": 0
+    },
+    {
+      "Label": "GPWS - % LOWER ANN",
+      "LabelIds": [
+        "TERR",
+        "SYS"
+      ],
+      "MessageType": "CC",
+      "MessageChannel": 10,
+      "MessageIds": [
+        20,
+        21
+      ],
+      "ValueOn": 1,
+      "ValueOff": 0
+    },
+    {
+      "Label": "GPWS - % ANN",
+      "LabelIds": [
+        "GS MODE",
+        "FLAP MODE",
+        "LDG FLAP3"
+      ],
+      "MessageType": "CC",
+      "MessageChannel": 10,
+      "MessageIds": [
+        22,
+        23,
+        24
+      ],
+      "ValueOn": 1,
+      "ValueOff": 0
+    },
+    {
+      "Label": "RCDR - % UPPER ANN",
+      "LabelIds": [
+        "GND CTL"
+      ],
+      "MessageType": "CC",
+      "MessageChannel": 11,
+      "MessageIds": [
+        14
+      ],
+      "ValueOn": 1,
+      "ValueOff": 0
+    },
+    {
+      "Label": "RCDR - % LOWER ANN",
+      "LabelIds": [
+        "GND CTL"
+      ],
+      "MessageType": "CC",
+      "MessageChannel": 10,
+      "MessageIds": [
+        14
+      ],
+      "ValueOn": 1,
+      "ValueOff": 0
+    },
+    {
+      "Label": "OXYGEN - % UPPER ANN",
+      "LabelIds": [
+        "HIGH ALT",
+        "PAX",
+        "CREW SUPPLY"
+      ],
+      "MessageType": "CC",
+      "MessageChannel": 11,
+      "MessageIds": [
+        10,
+        12,
+        13
+      ],
+      "ValueOn": 1,
+      "ValueOff": 0
+    },
+    {
+      "Label": "OXYGEN - % LOWER ANN",
+      "LabelIds": [
+        "HIGH ALT",
+        "PAX",
+        "CREW SUPPLY"
+      ],
+      "MessageType": "CC",
+      "MessageChannel": 10,
+      "MessageIds": [
+        10,
+        12,
+        13
+      ],
+      "ValueOn": 1,
+      "ValueOff": 0
+    },
+    {
+      "Label": "EMER ELEC PWR - % UPPER ANN",
+      "LabelIds": [
+        "EMER"
+      ],
+      "MessageType": "CC",
+      "MessageChannel": 11,
+      "MessageIds": [
+        25
+      ],
+      "ValueOn": 1,
+      "ValueOff": 0
+    },
+    {
+      "Label": "EMER ELEC PWR - % LOWER ANN",
+      "LabelIds": [
+        "EMER"
+      ],
+      "MessageType": "CC",
+      "MessageChannel": 10,
+      "MessageIds": [
+        25
+      ],
+      "ValueOn": 1,
+      "ValueOff": 0
+    },
+    {
+      "Label": "RAIN CPT - % STATE",
+      "LabelIds": [
+        "WIPER"
+      ],
+      "MessageType": "CC",
+      "MessageChannel": 10,
+      "MessageIds": [
+        2
+      ],
+      "ValueOn": 1,
+      "ValueOff": 0
+    },
+    {
+      "Label": "RAIN CPT - % STATE 2",
+      "LabelIds": [
+        "WIPER"
+      ],
+      "MessageType": "CC",
+      "MessageChannel": 10,
+      "MessageIds": [
+        2
+      ],
+      "ValueOn": 2
+    },
+    {
+      "Label": "RAIN FO - % STATE",
+      "LabelIds": [
+        "WIPER"
+      ],
+      "MessageType": "CC",
+      "MessageChannel": 10,
+      "MessageIds": [
+        4
+      ],
+      "ValueOn": 1,
+      "ValueOff": 0
+    },
+    {
+      "Label": "RAIN FO - % STATE 2",
+      "LabelIds": [
+        "WIPER"
+      ],
+      "MessageType": "CC",
+      "MessageChannel": 10,
+      "MessageIds": [
+        4
+      ],
+      "ValueOn": 2
+    },
+    {
+      "Label": "CABIN PRESS - % STATE",
+      "LabelIds": [
+        "MAN CTL"
+      ],
+      "MessageType": "CC",
+      "MessageChannel": 10,
+      "MessageIds": [
+        74
+      ],
+      "ValueOn": 1,
+      "ValueOff": 0
+    },
+    {
+      "Label": "% UPPER ANN",
+      "LabelIds": [
+        "ANTI ICE - WING",
+        "ANTI ICE - ENG1",
+        "ANTI ICE - ENG2",
+        "PROBE - HEAT",
+        "CABIN PRESS - MODE",
+        "CABIN PRESS - DITCHING",
+        "APU - MASTER",
+        "APU - START"
+      ],
+      "MessageType": "CC",
+      "MessageChannel": 11,
+      "MessageIds": [
+        70,
+        71,
+        72,
+        73,
+        75,
+        77,
+        58,
+        59
+      ],
+      "ValueOn": 1,
+      "ValueOff": 0
+    },
+    {
+      "Label": "% LOWER ANN",
+      "LabelIds": [
+        "ANTI ICE - WING",
+        "ANTI ICE - ENG1",
+        "ANTI ICE - ENG2",
+        "PROBE - HEAT",
+        "CABIN PRESS - MODE",
+        "CABIN PRESS - DITCHING",
+        "APU - MASTER",
+        "APU - START"
+      ],
+      "MessageType": "CC",
+      "MessageChannel": 10,
+      "MessageIds": [
+        70,
+        71,
+        72,
+        73,
+        75,
+        77,
+        58,
+        59
+      ],
+      "ValueOn": 1,
+      "ValueOff": 0
+    },
+    {
+      "Label": "AIRCOND - % STATE",
+      "LabelIds": [
+        "PACK FLOW",
+        "COCKPIT",
+        "FWD CABIN",
+        "AFT CABIN",
+        "XBLEED"
+      ],
+      "MessageType": "CC",
+      "MessageChannel": 10,
+      "MessageIds": [
+        85,
+        86,
+        87,
+        88,
+        89
+      ],
+      "ValueOn": 1,
+      "ValueOff": 0
+    },
+    {
+      "Label": "AIRCOND - % UPPER ANN",
+      "LabelIds": [
+        "HOT AIR",
+        "PACK1",
+        "ENG1 BLEED",
+        "RAM AIR",
+        "APU BLEED",
+        "ENG2 BLEED",
+        "PACK2"
+      ],
+      "MessageType": "CC",
+      "MessageChannel": 11,
+      "MessageIds": [
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84
+      ],
+      "ValueOn": 1,
+      "ValueOff": 0
+    },
+    {
+      "Label": "AIRCOND - % LOWER ANN",
+      "LabelIds": [
+        "HOT AIR",
+        "PACK1",
+        "ENG1 BLEED",
+        "RAM AIR",
+        "APU BLEED",
+        "ENG2 BLEED",
+        "PACK2"
+      ],
+      "MessageType": "CC",
+      "MessageChannel": 10,
+      "MessageIds": [
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84
+      ],
+      "ValueOn": 1,
+      "ValueOff": 0
+    },
+    {
+      "Label": "ELEC - % UPPER ANN",
+      "LabelIds": [
+        "COMM",
+        "BAT1",
+        "BAT2",
+        "AC ESS FEED",
+        "GALY CAB",
+        "IDG1",
+        "GEN1",
+        "APU GEN",
+        "BUS TIE",
+        "EXT PWR",
+        "GEN2",
+        "IDG2"
+      ],
+      "MessageType": "CC",
+      "MessageChannel": 11,
+      "MessageIds": [
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96,
+        97,
+        98,
+        99,
+        100,
+        101
+      ],
+      "ValueOn": 1,
+      "ValueOff": 0
+    },
+    {
+      "Label": "ELEC - % LOWER ANN",
+      "LabelIds": [
+        "COMM",
+        "BAT1",
+        "BAT2",
+        "AC ESS FEED",
+        "GALY CAB",
+        "IDG1",
+        "GEN1",
+        "APU GEN",
+        "BUS TIE",
+        "EXT PWR",
+        "GEN2",
+        "IDG2"
+      ],
+      "MessageType": "CC",
+      "MessageChannel": 10,
+      "MessageIds": [
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96,
+        97,
+        98,
+        99,
+        100,
+        101
+      ],
+      "ValueOn": 1,
+      "ValueOff": 0
+    },
+    {
+      "Label": "FUEL - % UPPER ANN",
+      "LabelIds": [
+        "PUMP LTK1",
+        "PUMP LTK2",
+        "PUMP CTK1",
+        "PUMP CTK2",
+        "PUMP RTK1",
+        "PUMP RTK2",
+        "MODESEL",
+        "XFEED"
+      ],
+      "MessageType": "CC",
+      "MessageChannel": 11,
+      "MessageIds": [
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        109
+      ],
+      "ValueOn": 1,
+      "ValueOff": 0
+    },
+    {
+      "Label": "FUEL - % LOWER ANN",
+      "LabelIds": [
+        "PUMP LTK1",
+        "PUMP LTK2",
+        "PUMP CTK1",
+        "PUMP CTK2",
+        "PUMP RTK1",
+        "PUMP RTK2",
+        "MODESEL",
+        "XFEED"
+      ],
+      "MessageType": "CC",
+      "MessageChannel": 10,
+      "MessageIds": [
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        109
+      ],
+      "ValueOn": 1,
+      "ValueOff": 0
+    },
+    {
+      "Label": "HYD - % STATE",
+      "LabelIds": [
+        "RAT MAN ON"
+      ],
+      "MessageType": "CC",
+      "MessageChannel": 10,
+      "MessageIds": [
+        110
+      ],
+      "ValueOn": 1,
+      "ValueOff": 0
+    },
+    {
+      "Label": "HYD - % UPPER ANN",
+      "LabelIds": [
+        "GREEN ENG1 PUMP",
+        "BLUE ELEC PUMP",
+        "PTU",
+        "YELLOW ENG2 PUMP",
+        "YELLOW ELEC PUMP"
+      ],
+      "MessageType": "CC",
+      "MessageChannel": 11,
+      "MessageIds": [
+        111,
+        112,
+        113,
+        114,
+        115
+      ],
+      "ValueOn": 1,
+      "ValueOff": 0
+    },
+    {
+      "Label": "HYD - % LOWER ANN",
+      "LabelIds": [
+        "GREEN ENG1 PUMP",
+        "BLUE ELEC PUMP",
+        "PTU",
+        "YELLOW ENG2 PUMP",
+        "YELLOW ELEC PUMP"
+      ],
+      "MessageType": "CC",
+      "MessageChannel": 10,
+      "MessageIds": [
+        111,
+        112,
+        113,
+        114,
+        115
+      ],
+      "ValueOn": 1,
+      "ValueOff": 0
+    },
+    {
+      "Label": "WRNPNL CPT - % UPPER ANN",
+      "LabelIds": [
+        "MASTER WARN",
+        "MASTER CAUT",
+        "PRIO",
+        "AUTOLAND"
+      ],
+      "MessageType": "CC",
+      "MessageChannel": 13,
+      "MessageIds": [
+        6,
+        7,
+        9,
+        18
+      ],
+      "ValueOn": 1,
+      "ValueOff": 0
+    },
+    {
+      "Label": "WRNPNL CPT - % LOWER ANN",
+      "LabelIds": [
+        "MASTER WARN",
+        "MASTER CAUT",
+        "PRIO",
+        "AUTOLAND"
+      ],
+      "MessageType": "CC",
+      "MessageChannel": 12,
+      "MessageIds": [
+        6,
+        7,
+        9,
+        18
+      ],
+      "ValueOn": 1,
+      "ValueOff": 0
+    },
+    {
+      "Label": "WRNPNL FO - % UPPER ANN",
+      "LabelIds": [
+        "MASTER WARN",
+        "MASTER CAUT",
+        "PRIO",
+        "AUTOLAND"
+      ],
+      "MessageType": "CC",
+      "MessageChannel": 13,
+      "MessageIds": [
+        36,
+        37,
+        39,
+        40
+      ],
+      "ValueOn": 1,
+      "ValueOff": 0
+    },
+    {
+      "Label": "WRNPNL FO - % LOWER ANN",
+      "LabelIds": [
+        "MASTER WARN",
+        "MASTER CAUT",
+        "PRIO",
+        "AUTOLAND"
+      ],
+      "MessageType": "CC",
+      "MessageChannel": 12,
+      "MessageIds": [
+        36,
+        37,
+        39,
+        40
+      ],
+      "ValueOn": 1,
+      "ValueOff": 0
+    },
+    {
+      "Label": "ATCTCAS - % STATE",
+      "LabelIds": [
+        "MODE SEL",
+        "XPDR SEL",
+        "ALT RPTG",
+        "TCAS MODE",
+        "TCAS TRAFFIC",
+        "ATC FAIL"
+      ],
+      "MessageType": "CC",
+      "MessageChannel": 12,
+      "MessageIds": [
+        30,
+        31,
+        32,
+        33,
+        34,
+        35
+      ],
+      "ValueOn": 1,
+      "ValueOff": 0
+    },
+    {
+      "Label": "ATCTCAS - % STATE 2",
+      "LabelIds": [
+        "MODE SEL",
+        "TCAS MODE",
+        "TCAS TRAFFIC"
+      ],
+      "MessageType": "CC",
+      "MessageChannel": 12,
+      "MessageIds": [
+        30,
+        33,
+        34
+      ],
+      "ValueOn": 2
+    },
+    {
+      "Label": "ATCTCAS - % STATE 3",
+      "LabelIds": [
+        "TCAS TRAFFIC"
+      ],
+      "MessageType": "CC",
+      "MessageChannel": 12,
+      "MessageIds": [
+        34
+      ],
+      "ValueOn": 3
+    },
+    {
+      "Label": "EXT LT - % STATE",
+      "LabelIds": [
+        "STROBE",
+        "BEACON",
+        "WING",
+        "NAV LOGO",
+        "RWY TURNOFF",
+        "LAND L",
+        "LAND R",
+        "NOSE"
+      ],
+      "MessageType": "CC",
+      "MessageChannel": 10,
+      "MessageIds": [
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57
+      ],
+      "ValueOn": 1,
+      "ValueOff": 0
+    },
+    {
+      "Label": "EXT LT - % STATE 2",
+      "LabelIds": [
+        "STROBE",
+        "NAV LOGO",
+        "LAND L",
+        "LAND R",
+        "NOSE"
+      ],
+      "MessageType": "CC",
+      "MessageChannel": 10,
+      "MessageIds": [
+        50,
+        53,
+        55,
+        56,
+        57
+      ],
+      "ValueOn": 2
+    },
+    {
+      "Label": "INT LT - % STATE",
+      "LabelIds": [
+        "ICE IND",
+        "DOME",
+        "ANN LT"
+      ],
+      "MessageType": "CC",
+      "MessageChannel": 10,
+      "MessageIds": [
+        65,
+        66,
+        67
+      ],
+      "ValueOn": 1,
+      "ValueOff": 0
+    },
+    {
+      "Label": "INT LT - % STATE 2",
+      "LabelIds": [
+        "DOME",
+        "ANN LT"
+      ],
+      "MessageType": "CC",
+      "MessageChannel": 10,
+      "MessageIds": [
+        66,
+        67
+      ],
+      "ValueOn": 2
+    },
+    {
+      "Label": "SIGNS - %",
+      "LabelIds": [
+        "EMER EXIT LT ANN"
+      ],
+      "MessageType": "CC",
+      "MessageChannel": 10,
+      "MessageIds": [
+        62
+      ],
+      "ValueOn": 1,
+      "ValueOff": 0
+    },
+    {
+      "Label": "SIGNS - % STATE",
+      "LabelIds": [
+        "SEAT",
+        "NOSMOKE",
+        "EMER EXIT LT"
+      ],
+      "MessageType": "CC",
+      "MessageChannel": 10,
+      "MessageIds": [
+        60,
+        61,
+        63
+      ],
+      "ValueOn": 1,
+      "ValueOff": 0
+    },
+    {
+      "Label": "SIGNS - % STATE 2",
+      "LabelIds": [
+        "NOSMOKE",
+        "EMER EXIT LT"
+      ],
+      "MessageType": "CC",
+      "MessageChannel": 10,
+      "MessageIds": [
+        61,
+        63
+      ],
+      "ValueOn": 2
+    },
+    {
+      "Label": "FIRE - % STATE",
+      "LabelIds": [
+        "ENG1 FIRE",
+        "ENG2 FIRE",
+        "APU FIRE"
+      ],
+      "MessageType": "CC",
+      "MessageChannel": 10,
+      "MessageIds": [
+        116,
+        120,
+        124
+      ],
+      "ValueOn": 1,
+      "ValueOff": 0
+    },
+    {
+      "Label": "FIRE - % UPPER ANN",
+      "LabelIds": [
+        "ENG1 AGENT1",
+        "ENG1 AGENT2",
+        "ENG2 AGENT1",
+        "ENG2 AGENT2",
+        "APU AGENT"
+      ],
+      "MessageType": "CC",
+      "MessageChannel": 11,
+      "MessageIds": [
+        118,
+        119,
+        122,
+        123,
+        126
+      ],
+      "ValueOn": 1,
+      "ValueOff": 0
+    },
+    {
+      "Label": "FIRE - % LOWER ANN",
+      "LabelIds": [
+        "ENG1 AGENT1",
+        "ENG1 AGENT2",
+        "ENG2 AGENT1",
+        "ENG2 AGENT2",
+        "APU AGENT"
+      ],
+      "MessageType": "CC",
+      "MessageChannel": 10,
+      "MessageIds": [
+        118,
+        119,
+        122,
+        123,
+        126
+      ],
+      "ValueOn": 1,
+      "ValueOff": 0
+    }
+  ]
+}
