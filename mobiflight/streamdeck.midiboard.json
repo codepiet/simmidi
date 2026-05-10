@@ -183,8 +183,7 @@
         "ADIR3",
         "ADR1",
         "ADR2",
-        "ADR3",
-        "ONBAT"
+        "ADR3"
       ],
       "InputType": "Button",
       "MessageType": "Note",
@@ -198,8 +197,7 @@
         45,
         46,
         47,
-        48,
-        49
+        48
       ]
     },
     {
