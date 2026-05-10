@@ -1,13 +1,6 @@
 # MIDI Board Overview
 
-Source: `.vscode/assets/streamdeck.midiboard.json`
-
-Generated from 32 input groups (156 devices) and 59 output groups (213 reactions).
-
-Notes:
-- Device names are expanded from `Label` + `LabelIds`, for example `RAIN CPT - %` + `RPLNT` becomes `RAIN CPT - RPLNT`.
-- Korry outputs are split into `Lower ANN` and `Upper ANN`; upper usually uses the next MIDI channel.
-- `-` means no matching entry was found in that section.
+This list of Airbus Widgets have been taken from the file `mobiflight/streamdeck.midiboard.json`. We have defined about 160 devices and over 200 reactions.
 
 | Device | Input Sends | Output State / Other | Lower ANN | Upper ANN | ANN |
 |---|---:|---:|---:|---:|---:|
