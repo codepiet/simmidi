@@ -55,7 +55,6 @@
       "LabelIds": [
         "HIGH ALT",
         "MASK MAN",
-        "PAX",
         "CREW SUPPLY"
       ],
       "InputType": "Button",
@@ -64,7 +63,6 @@
       "MessageIds": [
         10,
         11,
-        12,
         13
       ]
     },
@@ -941,20 +939,7 @@
       "ValueOff": 0
     },
     {
-      "Label": "RCDR - % UPPER ANN",
-      "LabelIds": [
-        "GND CTL"
-      ],
-      "MessageType": "CC",
-      "MessageChannel": 11,
-      "MessageIds": [
-        14
-      ],
-      "ValueOn": 1,
-      "ValueOff": 0
-    },
-    {
-      "Label": "RCDR - % LOWER ANN",
+      "Label": "RCDR - % ANN",
       "LabelIds": [
         "GND CTL"
       ],
@@ -967,34 +952,28 @@
       "ValueOff": 0
     },
     {
-      "Label": "OXYGEN - % UPPER ANN",
+      "Label": "OXYGEN - % ANN",
       "LabelIds": [
-        "HIGH ALT",
-        "PAX",
-        "CREW SUPPLY"
+        "PASSENGER"
       ],
       "MessageType": "CC",
       "MessageChannel": 11,
       "MessageIds": [
-        10,
-        12,
-        13
+        12
       ],
       "ValueOn": 1,
       "ValueOff": 0
     },
     {
-      "Label": "OXYGEN - % LOWER ANN",
+      "Label": "OXYGEN - % ANN",
       "LabelIds": [
         "HIGH ALT",
-        "PAX",
         "CREW SUPPLY"
       ],
       "MessageType": "CC",
       "MessageChannel": 10,
       "MessageIds": [
         10,
-        12,
         13
       ],
       "ValueOn": 1,
@@ -1090,6 +1069,19 @@
       "ValueOff": 0
     },
     {
+      "Label": "% ANN",
+      "LabelIds": [
+        "CABIN PRESS - DITCHING"
+      ],
+      "MessageType": "CC",
+      "MessageChannel": 10,
+      "MessageIds": [
+        77
+      ],
+      "ValueOn": 1,
+      "ValueOff": 0
+    },
+    {
       "Label": "% UPPER ANN",
       "LabelIds": [
         "ANTI ICE - WING",
@@ -1097,7 +1089,6 @@
         "ANTI ICE - ENG2",
         "PROBE - HEAT",
         "CABIN PRESS - MODE",
-        "CABIN PRESS - DITCHING",
         "APU - MASTER",
         "APU - START"
       ],
@@ -1109,7 +1100,6 @@
         72,
         73,
         75,
-        77,
         58,
         59
       ],
@@ -1124,7 +1114,6 @@
         "ANTI ICE - ENG2",
         "PROBE - HEAT",
         "CABIN PRESS - MODE",
-        "CABIN PRESS - DITCHING",
         "APU - MASTER",
         "APU - START"
       ],
@@ -1136,7 +1125,6 @@
         72,
         73,
         75,
-        77,
         58,
         59
       ],
@@ -1389,6 +1377,32 @@
         113,
         114,
         115
+      ],
+      "ValueOn": 1,
+      "ValueOff": 0
+    },
+    {
+      "Label": "CALLS - % UPPER ANN",
+      "LabelIds": [
+        "EMER"
+      ],
+      "MessageType": "CC",
+      "MessageChannel": 11,
+      "MessageIds": [
+        9
+      ],
+      "ValueOn": 1,
+      "ValueOff": 0
+    },
+    {
+      "Label": "CALLS - % LOWER ANN",
+      "LabelIds": [
+        "EMER"
+      ],
+      "MessageType": "CC",
+      "MessageChannel": 10,
+      "MessageIds": [
+        9
       ],
       "ValueOn": 1,
       "ValueOff": 0
