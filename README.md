@@ -17,6 +17,10 @@ to that folder.
 
 Now restart StreamDeck App.
 
+For using the provided buttons (MIDI Automatic Button and MIDI Korry Button), go to the
+[Documentation](doc/)
+
+
 
 # DEVELOPERS
 
