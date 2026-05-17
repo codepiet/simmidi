@@ -1,6 +1,10 @@
 # Node.js
 node_modules/
 
+# .NET build output
+bin/
+obj/
+
 # Stream Deck files
 *.sdPlugin/bin
 *.sdPlugin/logs
