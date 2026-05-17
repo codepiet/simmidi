@@ -4,7 +4,7 @@
 simmidi is a relatively easy way to connect your StreamDeck to Mobiflight (MF) via MIDI.
 My goal was to design all panels for an Airbus A320 with the StreamDeck and replace them one-by-one with real hardware made the classical Arduino-Mobiflight-way. Therefore I have to define buttons in MF anyway - so later I can switch to real hardware.
 
-There are a few plugins for communicating with MSFS2024 - here I' mention PilotsDeck and the AxisAndOhs Plugin. There is a MIDI Plugin, too. But - my goal was an easy way to configure the buttons. Of course there is a lot of work in the mobiflight-midiboard file - but you as a user will not see that. So the configuration of the buttons in the StreamDeck App should be easy - and the configuration in Mobiflight should be as ever.
+There are a few plugins for communicating with MSFS2024 - here I'll mention PilotsDeck and the AxisAndOhs Plugin. There is a MIDI Plugin, too. But - my goal was an easy way to configure the buttons. And I did not want to have payware - because I am using this on many Computers with my students. Of course there is a lot of work in the mobiflight-midiboard file - but you as a user will not see that. So the configuration of the buttons in the StreamDeck App should be easy - and the configuration in Mobiflight should be as ever.
 
 A Tutorial with an example is provided in the mobiflight folder. Please read the [exampleDocumentation](doc/doc.md).
 
