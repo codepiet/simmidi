@@ -629,6 +629,64 @@
         33,
         34
       ]
+    },
+    {
+      "Label": "COCKPIT DOOR - %",
+      "LabelIds": [
+        "LOCK",
+        "UNLOCK",
+        "VIDEO"
+      ],
+      "InputType": "Button",
+      "MessageType": "Note",
+      "MessageChannel": 12,
+      "MessageIds": [
+        50,
+        51,
+        53
+      ]
+    },
+    {
+      "Label": "FLAPS - %",
+      "LabelIds": [
+        "HANDLE"
+      ],
+      "InputType": "Button",
+      "MessageType": "Note",
+      "MessageChannel": 12,
+      "MessageIds": [
+        40
+      ]
+    },
+    {
+      "Label": "PARKING BRAKE - %",
+      "LabelIds": [
+        "HANDLE"
+      ],
+      "InputType": "Button",
+      "MessageType": "Note",
+      "MessageChannel": 12,
+      "MessageIds": [
+        41
+      ]
+    },
+    {
+      "Label": "SWITCHING PANEL - %",
+      "LabelIds": [
+        "ATT HDG",
+        "AIR DATA",
+        "EIS DMC",
+        "ECAM/ND XFR"
+      ],
+      "InputType": "Button",
+      "MessageType": "Note",
+      "MessageChannel": 12,
+      "MessageIds": [
+        45,
+        46,
+        47,
+        48
+      ]
     }
   ],
   "Outputs": [
@@ -638,7 +696,7 @@
         "ONBAT"
       ],
       "MessageType": "CC",
-      "MessageChannel": 11,
+      "MessageChannel": 10,
       "MessageIds": [
         49
       ],
@@ -1158,7 +1216,6 @@
         "HOT AIR",
         "PACK1",
         "ENG1 BLEED",
-        "RAM AIR",
         "APU BLEED",
         "ENG2 BLEED",
         "PACK2"
@@ -1169,7 +1226,6 @@
         78,
         79,
         80,
-        81,
         82,
         83,
         84
@@ -1205,7 +1261,6 @@
     {
       "Label": "ELEC - % UPPER ANN",
       "LabelIds": [
-        "COMM",
         "BAT1",
         "BAT2",
         "AC ESS FEED",
@@ -1213,7 +1268,6 @@
         "IDG1",
         "GEN1",
         "APU GEN",
-        "BUS TIE",
         "EXT PWR",
         "GEN2",
         "IDG2"
@@ -1221,7 +1275,6 @@
       "MessageType": "CC",
       "MessageChannel": 11,
       "MessageIds": [
-        90,
         91,
         92,
         93,
@@ -1229,7 +1282,6 @@
         95,
         96,
         97,
-        98,
         99,
         100,
         101
@@ -1245,13 +1297,11 @@
         "BAT2",
         "AC ESS FEED",
         "GALY CAB",
-        "IDG1",
         "GEN1",
         "APU GEN",
         "BUS TIE",
         "EXT PWR",
-        "GEN2",
-        "IDG2"
+        "GEN2"
       ],
       "MessageType": "CC",
       "MessageChannel": 10,
@@ -1261,13 +1311,11 @@
         92,
         93,
         94,
-        95,
         96,
         97,
         98,
         99,
-        100,
-        101
+        100
       ],
       "ValueOn": 1,
       "ValueOff": 0
@@ -1714,6 +1762,169 @@
       ],
       "ValueOn": 1,
       "ValueOff": 0
+    },
+    {
+      "Label": "ENG - % UPPER ANN",
+      "LabelIds": [
+        "MAN START 1",
+        "MAN START 2"
+      ],
+      "MessageType": "CC",
+      "MessageChannel": 13,
+      "MessageIds": [
+        1,
+        2
+      ],
+      "ValueOn": 1,
+      "ValueOff": 0
+    },
+    {
+      "Label": "ENG - % LOWER ANN",
+      "LabelIds": [
+        "MAN START 1",
+        "MAN START 2"
+      ],
+      "MessageType": "CC",
+      "MessageChannel": 12,
+      "MessageIds": [
+        1,
+        2
+      ],
+      "ValueOn": 1,
+      "ValueOff": 0
+    },
+    {
+      "Label": "COCKPIT DOOR - %",
+      "LabelIds": [
+        "LOCK STATE",
+        "UNLOCK STATE",
+        "OPEN IND LOWER ANN",
+        "LOCK LED",
+        "UNLOCK LED"
+      ],
+      "MessageType": "CC",
+      "MessageChannel": 12,
+      "MessageIds": [
+        50,
+        51,
+        52,
+        54,
+        55
+      ],
+      "ValueOn": 1,
+      "ValueOff": 0
+    },
+    {
+      "Label": "COCKPIT DOOR - %",
+      "LabelIds": [
+        "OPEN IND UPPER ANN"
+      ],
+      "MessageType": "CC",
+      "MessageChannel": 13,
+      "MessageIds": [
+        52
+      ],
+      "ValueOn": 1,
+      "ValueOff": 0
+    },
+    {
+      "Label": "FLAPS - % 1",
+      "LabelIds": [
+        "STATE"
+      ],
+      "MessageType": "CC",
+      "MessageChannel": 12,
+      "MessageIds": [
+        40
+      ],
+      "ValueOn": 1,
+      "ValueOff": 0
+    },
+    {
+      "Label": "FLAPS - % 2",
+      "LabelIds": [
+        "STATE"
+      ],
+      "MessageType": "CC",
+      "MessageChannel": 12,
+      "MessageIds": [
+        40
+      ],
+      "ValueOn": 2
+    },
+    {
+      "Label": "FLAPS - % 3",
+      "LabelIds": [
+        "STATE"
+      ],
+      "MessageType": "CC",
+      "MessageChannel": 12,
+      "MessageIds": [
+        40
+      ],
+      "ValueOn": 3
+    },
+    {
+      "Label": "FLAPS - % FULL",
+      "LabelIds": [
+        "STATE"
+      ],
+      "MessageType": "CC",
+      "MessageChannel": 12,
+      "MessageIds": [
+        40
+      ],
+      "ValueOn": 4
+    },
+    {
+      "Label": "PARKING BRAKE - %",
+      "LabelIds": [
+        "STATE"
+      ],
+      "MessageType": "CC",
+      "MessageChannel": 12,
+      "MessageIds": [
+        41
+      ],
+      "ValueOn": 1,
+      "ValueOff": 0
+    },
+    {
+      "Label": "SWITCHING PANEL - % STATE",
+      "LabelIds": [
+        "ATT HDG",
+        "AIR DATA",
+        "EIS DMC",
+        "ECAM/ND XFR"
+      ],
+      "MessageType": "CC",
+      "MessageChannel": 12,
+      "MessageIds": [
+        45,
+        46,
+        47,
+        48
+      ],
+      "ValueOn": 1,
+      "ValueOff": 0
+    },
+    {
+      "Label": "SWITCHING PANEL - % STATE 2",
+      "LabelIds": [
+        "ATT HDG",
+        "AIR DATA",
+        "EIS DMC",
+        "ECAM/ND XFR"
+      ],
+      "MessageType": "CC",
+      "MessageChannel": 12,
+      "MessageIds": [
+        45,
+        46,
+        47,
+        48
+      ],
+      "ValueOn": 2
     }
   ]
 }
