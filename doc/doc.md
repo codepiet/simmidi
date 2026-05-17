@@ -30,6 +30,20 @@ For the aupper annunciator the buttons listens to channel + 1, here channel 11 a
 
 The korry buttons pngs have to be in the korry subfolder of the images folder.
 
+## Example Profile
+
+The following images are taken from the StreamDeck App and its AIRBUS A320-Profile, which you can find in the mobiflight folder.
+
+![Start Page](example0.png)
+
+![ADIRS Panel](example1.png)
+
+![ATC TCAS Panel](example2.png)
+
+![HYD FUEL Panel](example3.png)
+
+![LOWER Panel in Overhead (Ext Lights, APU, INT Light, ...)](example4.png)
+
 # MIDI Device Configuration
 The provided example has configured all items documented in [the Device-Documentation](streamdeck-devices.md) for the Fenix A320 in the mobiflight folder of this project.
 The overhead panel is configured along with some other panels and buttons (e.g. ATCTCAS and Warning Panels).
